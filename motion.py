@@ -56,11 +56,25 @@ def init_saucer(x, y, scale):
 # The second argument, frame_num, will be the number of the frame in the animation. The final argument, win, will be the 
 # GraphWin window into which the saucer has been drawn.
 def animate_saucer( shapes, frame_num, win ): # shapes is equal to flying saucer list returned in init_saucer
-
+    # added some movement to the saucer
     if frame_num < 50:
         move( shapes, -1, -1)
     else:
         move( shapes, 1, 1)
+
+    if frame_num == 70:
+        mid = shapes[0].getCenter()
+        radius = shapes[0].getRadius()
+        scale = radius/4 
+        beam = gr.Polygon ( gr.Point(mid.getX() - scale*4, mid.getY() + scale*40), gr.Point (mid.getX() + scale*4, mid.getY() + scale*40), 
+        gr.Point(mid.getX() + scale*15, mid.getY() + scale*110), gr.Point(mid.getX() - scale*15, mid.getY() + scale*110))
+        beam.setFill(gr.color_rgb(255, 255, 180))
+        beam.draw( win)
+        shapes.append(beam)
+        
+    if frame_num == 90:
+        beam = shapes.pop()
+        beam.undraw()
     # In animate_saucer, if the frame_num % 20 is equal to 0, set the fill color of the light (the first element in shapes list) to blue, 
     # else if the frame_num % 20 is equal to 10, set the light's color to red.
     light = shapes[0]
