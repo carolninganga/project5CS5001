@@ -9,6 +9,26 @@ import time
 import random
 import graphicsPlus as gr
 
+def draw( shapes, win ):
+    """ Draw all of the objects in shapes in the window (win) """
+    # for each thing in shapes
+    for item in shapes:
+        item.draw( win )
+        # call the draw method on thing with win as the argument
+def move( shapes, dx, dy ):
+    """ Draw all of the objects in shapes by dx in the x-direction
+    and dy in the y-direction """
+    # for each item in shapes
+    for item in shapes:
+        item.move( dx, dy)
+        # call the move method on item with dx and dy as arguments
+def undraw( shapes ):
+    """ Undraw all of the objects in shapes """
+    # for each thing in shapes
+    for item in shapes:
+        item.undraw()
+        # call the undraw method on thing
+
 # create a flying saucer from a circle and two ovals and return a list containing the basic shapes.
 def init_saucer(x, y, scale):
 
@@ -37,6 +57,10 @@ def init_saucer(x, y, scale):
 # GraphWin window into which the saucer has been drawn.
 def animate_saucer( shapes, frame_num, win ): # shapes is equal to flying saucer list returned in init_saucer
 
+    if frame_num < 50:
+        move( shapes, -1, -1)
+    else:
+        move( shapes, 1, 1)
     # In animate_saucer, if the frame_num % 20 is equal to 0, set the fill color of the light (the first element in shapes list) to blue, 
     # else if the frame_num % 20 is equal to 10, set the light's color to red.
     light = shapes[0]
@@ -54,12 +78,10 @@ def main():
     saucer = init_saucer(200, 200, 2)
 
     # draw each item in the saucer shape list
-    for item in saucer:
-        item.draw(win)
+    draw( saucer, win)
 
     for i in range(100):
-
-        if win.checkMouse() != None:
+        if win.checkMouse() != None: 
             break
         elif win.checkKey() == 'q':
             break
