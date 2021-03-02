@@ -49,3 +49,11 @@ def test_man():
     win.getMouse()
     win.close()
 
+def draw( shapes, win ):
+
+    for thing in shapes:
+        thing.draw( win )
+
+
+if __name__ == "__main__":
+    test_man()
