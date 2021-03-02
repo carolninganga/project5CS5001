@@ -89,17 +89,27 @@ def main():
     win = gr.GraphWin( "Saucer", 400, 400, False )
     
     # create the saucer shape list
-    saucer = init_saucer(200, 200, 2)
+    saucer1 = init_saucer(200, 200, 0.5)
+    saucer2 = init_saucer(300, 300, 0.75)
+    saucer3 = init_saucer(100, 100, 1)
 
+
+    scene = [ saucer1, saucer2, saucer3 ]
+
+    for saucer in scene:
+        draw( saucer, win)
+        
     # draw each item in the saucer shape list
-    draw( saucer, win)
 
     for i in range(100):
         if win.checkMouse() != None: 
             break
         elif win.checkKey() == 'q':
             break
-        animate_saucer(saucer, i, win)
+        animate_saucer(saucer1, i, win)
+        animate_saucer(saucer2, i, win)
+        animate_saucer(saucer3, i, win)
+
         win.update() # at each iteration the window has to update
         time.sleep(0.1) # tells the loop to pause for a tenth of a second, meaning that ten loops is roughly one second of animation time.
 
