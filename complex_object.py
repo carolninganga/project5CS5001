@@ -2,7 +2,17 @@
 # CS 5001 
 # Project 5 1st submission
 
+import time 
+import random
 import graphicsPlus as gr
+
+def move( shapes, dx, dy ):
+    """ Draw all of the objects in shapes by dx in the x-direction
+    and dy in the y-direction """
+    # for each item in shapes
+    for item in shapes:
+        item.move( dx, dy)
+
 
 # def init_man defines the pool fucntion with three parameters x, y and scales
 def init_man(x, y, scale):
@@ -48,6 +58,13 @@ def test_man():
 
     win.getMouse()
     win.close()
+
+def animate_man( shapes, frame_num, win ): # shapes is equal to the man list returned in init_man
+    # added some movement to the man 
+    if frame_num < 50:
+        move( shapes, -1, -1)
+    else:
+        move( shapes, 1, 1)
 
 def draw( shapes, win ):
 
