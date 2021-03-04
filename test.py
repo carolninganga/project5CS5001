@@ -81,6 +81,33 @@ def init_pool(x, y, scale):
 
     return pool
 
+# def init_fish draws the fish for the water
+
+def init_riverFish( x, y, scale ):
+
+    # define a polygon for the body
+    bodylist = [ gr.Point( x + 5*scale, y - 5*scale ),
+                 gr.Point( x + 25*scale, y - 2*scale ),
+                 gr.Point( x + 45*scale, y - 8*scale ),
+                 gr.Point( x + 70*scale, y - 15*scale ),
+                 gr.Point( x + 100*scale, y - 6*scale ),
+                 gr.Point( x + 90*scale, y - 20*scale ),
+                 gr.Point( x + 100*scale, y - 34*scale ),
+                 gr.Point( x + 80*scale, y - 30*scale ),
+                 gr.Point( x + 55*scale, y - 27*scale ),
+                 gr.Point( x + 45*scale, y - 30*scale ),
+                 gr.Point( x + 24*scale, y - 40*scale ),
+                 gr.Point( x + 0*scale, y - 30*scale ),
+                 gr.Point( x - 8*scale, y - 28*scale ) ]
+    fishbody = gr.Polygon( bodylist)
+    fishbody.setFill( 'grey')
+    fishbody.setOutline( 'black' )
+    fishbody.setWidth( 4 )
+
+    fish = [ fishbody ]
+
+    # return the list
+    return fish
 
 #  shapes is a list of zelle objects that make a complex shape
 def draw( shapes, win ):
@@ -115,6 +142,9 @@ def scene( argsList ):
     print(argsList)
 
 
+    # draw the fish into the window 
+    fish = init_riverFish( x, y, scale)
+
     # draw the man into the window 
     man = init_man( x, y, scale)
 
@@ -128,6 +158,7 @@ def scene( argsList ):
     draw(man, win)
     draw(sun, win)
     draw(pool, win)
+    draw(fish, win )
 
     for i in range(100):
         if win.checkMouse() != None: 
