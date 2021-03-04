@@ -122,6 +122,27 @@ def animate_man( shapes, frame_num, win ): # shapes is equal to the man list ret
     else:
         move( shapes, -1, 0)
 
+def animate_fish( shapes, frame_num, win ): # shapes is equal to the man list returned in init_man
+    # added some movement to the man 
+    if frame_num < 10:
+        move( shapes, 0, 0)
+    else:
+        move( shapes, -5, 0)
+
+def animate_fish1( shapes, frame_num, win ): # shapes is equal to the man list returned in init_man
+    # added some movement to the man 
+    if frame_num < 10:
+        move( shapes, 0, 0)
+    else:
+        move( shapes, -5, 0)
+
+def animate_fish2( shapes, frame_num, win ): # shapes is equal to the man list returned in init_man
+    # added some movement to the man 
+    if frame_num < 10:
+        move( shapes, 0, 0)
+    else:
+        move( shapes, -5, 0)
+
 # draws the entire scene with man pool and sun 
 def scene( argsList ): 
  
@@ -143,7 +164,11 @@ def scene( argsList ):
 
 
     # draw the fish into the window 
-    fish = init_riverFish( x, y, scale)
+    fish = init_riverFish( x+200*scale, y+300*scale, scale)
+    fish1 = init_riverFish( x+300*scale, y+400*scale, scale)
+    fish2 = init_riverFish( x+400*scale, y+500*scale, scale)
+
+
 
     # draw the man into the window 
     man = init_man( x, y, scale)
@@ -159,6 +184,10 @@ def scene( argsList ):
     draw(sun, win)
     draw(pool, win)
     draw(fish, win )
+    draw(fish1, win)
+    draw(fish2, win)
+
+
 
     for i in range(100):
         if win.checkMouse() != None: 
@@ -166,6 +195,10 @@ def scene( argsList ):
         elif win.checkKey() == 'q':
             break
         animate_man(man, i, win)
+        animate_fish(fish, i, win)
+        animate_fish1(fish1, i, win)
+        animate_fish2(fish2, i, win)
+
 
 
         win.update() # at each iteration the window has to update
