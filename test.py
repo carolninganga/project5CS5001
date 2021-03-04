@@ -118,19 +118,6 @@ def scene( argsList ):
     # draw the man into the window 
     man = init_man( x, y, scale)
 
-    for i in range(100):
-        if win.checkMouse() != None: 
-            break
-        elif win.checkKey() == 'q':
-            break
-        animate_man(man1, i, win)
-        animate_man(man2, i, win)
-        animate_man(man3, i, win)
-
-
-        win.update() # at each iteration the window has to update
-        time.sleep(0.1) # tells the loop to pause for a tenth of a second, meaning that ten loops is roughly one second of animation time.
-
     # draw the sun into the window
     sun = init_sun( x, y, scale)
 
@@ -141,6 +128,17 @@ def scene( argsList ):
     draw(man, win)
     draw(sun, win)
     draw(pool, win)
+
+    for i in range(100):
+        if win.checkMouse() != None: 
+            break
+        elif win.checkKey() == 'q':
+            break
+        animate_man(man, i, win)
+
+
+        win.update() # at each iteration the window has to update
+        time.sleep(0.1) # tells the loop to pause for a tenth of a second, meaning that ten loops is roughly one second of animation time.
 
     # pause until user gets mouse
     # c.undraw()
