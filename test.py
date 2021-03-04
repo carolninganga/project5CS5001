@@ -122,22 +122,29 @@ def animate_man( shapes, frame_num, win ): # shapes is equal to the man list ret
     else:
         move( shapes, -1, 0)
 
-def animate_fish( shapes, frame_num, win ): # shapes is equal to the man list returned in init_man
+def animate_fish( shapes, frame_num, win ): # shapes is equal to the fish list returned in init_fish
     # added some movement to the man 
     if frame_num < 10:
         move( shapes, 0, 0)
     else:
         move( shapes, -5, 0)
 
-def animate_fish1( shapes, frame_num, win ): # shapes is equal to the man list returned in init_man
+def animate_fish1( shapes, frame_num, win ): # shapes is equal to the fish list returned in init_fish
     # added some movement to the man 
     if frame_num < 10:
         move( shapes, 0, 0)
     else:
         move( shapes, -5, 0)
 
-def animate_fish2( shapes, frame_num, win ): # shapes is equal to the man list returned in init_man
+def animate_fish2( shapes, frame_num, win ): # shapes is equal to the fish list returned in init_fish
     # added some movement to the man 
+    if frame_num < 10:
+        move( shapes, 0, 0)
+    else:
+        move( shapes, -5, 0)
+
+def animate_sun( shapes, frame_num, win ): # shapes is equal to the sun list returned in the init_sun
+# added some movement to the man 
     if frame_num < 10:
         move( shapes, 0, 0)
     else:
@@ -198,6 +205,7 @@ def scene( argsList ):
         animate_fish(fish, i, win)
         animate_fish1(fish1, i, win)
         animate_fish2(fish2, i, win)
+        animate_sun( sun, i, win )
 
 
 
