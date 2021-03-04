@@ -4,8 +4,18 @@
 # Man on a ship
 
 import graphicsPlus as gr
+import time
+import random
 
 import sys
+
+# 
+def move( shapes, dx, dy ):
+    """ Draw all of the objects in shapes by dx in the x-direction
+    and dy in the y-direction """
+    # for each item in shapes
+    for item in shapes:
+        item.move( dx, dy)
 
 # def init_man defines the pool fucntion with three parameters x, y and scales
 def init_man(x, y, scale):
@@ -107,6 +117,19 @@ def scene( argsList ):
 
     # draw the man into the window 
     man = init_man( x, y, scale)
+
+    for i in range(100):
+        if win.checkMouse() != None: 
+            break
+        elif win.checkKey() == 'q':
+            break
+        animate_man(man1, i, win)
+        animate_man(man2, i, win)
+        animate_man(man3, i, win)
+
+
+        win.update() # at each iteration the window has to update
+        time.sleep(0.1) # tells the loop to pause for a tenth of a second, meaning that ten loops is roughly one second of animation time.
 
     # draw the sun into the window
     sun = init_sun( x, y, scale)
